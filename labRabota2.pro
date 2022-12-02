@@ -24,10 +24,3 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
-
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/'../../../../Program Files/tiff/lib/' -ltiff
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/'../../../../Program Files/tiff/lib/' -ltiffd
-else:unix: LIBS += -L$$PWD/'../../../../Program Files/tiff/lib/' -ltiff
-
-INCLUDEPATH += $$PWD/'../../../../Program Files/tiff/include'
-DEPENDPATH += $$PWD/'../../../../Program Files/tiff/include'
