@@ -35,14 +35,14 @@ private:
     Ui::MainWindow *ui;
     QStringList files;
     QPixmap pix;
-    QLabel* choseFilesText;
+    QLabel* chooseFilesText;
     bool active;
     QImage img;
 
     void processImage(QString , int);
 
     void setUpInterface();
-    void paintEvent(QPaintEvent*);
+    void resizeEvent(QResizeEvent*);
 
 };
 #endif // MAINWINDOW_H

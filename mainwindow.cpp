@@ -14,8 +14,8 @@ MainWindow::MainWindow(QWidget *parent)
 
     ui->tableWidget->hide();
 
-    choseFilesText = new QLabel("Вы не выбрали файлы. Для выбора файла(или папки) выберите Открыть",this);
-    choseFilesText->show();
+    chooseFilesText = new QLabel("Вы не выбрали файлы. Для выбора файла(или папки) выберите Открыть",this);
+    chooseFilesText->show();
 
 }
 
@@ -26,7 +26,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::setUpInterface()
 {
-    choseFilesText->setVisible(false);
+    chooseFilesText->setVisible(false);
     ui->tableWidget->show();
     QVector<QString> btnText({"Имя","Размер","Разрешение","Глубина","Сжатие"});
     for(int i = 0;i < 5;i++){
@@ -34,9 +34,9 @@ void MainWindow::setUpInterface()
     }
 }
 
-void MainWindow::paintEvent(QPaintEvent *event)
+void MainWindow::resizeEvent(QResizeEvent*)
 {
-    choseFilesText->setGeometry(width()*0.18,height()*0.2,700,300);
+    chooseFilesText->setGeometry(width()*0.18,height()*0.2,700,300);
 }
 
 void MainWindow::processImage(QString filename, int i){
