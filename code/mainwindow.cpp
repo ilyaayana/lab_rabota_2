@@ -59,10 +59,10 @@ void MainWindow::processImage(QString filename, int i){
 void MainWindow::on_a_open_triggered()
 {
     QDir directory(QFileDialog::getExistingDirectory(this, tr("Open Folder")));
-    if(directory.isEmpty())
-        return;
     files = directory.entryList(QStringList() << "*.jpg" << "*.png" <<"*.bmp" << "*.tiff" << "*.tif" << "*.gif" << "*.pcx",QDir::Files);
-    ui->tableWidget->clear();
+    if(files.isEmpty())
+        return;
+    ui->tableWidget->setRowCount(0);
     for(int i = 0; i < files.size();i++)
     {
         if(ui->tableWidget->rowCount()<(i+1))
@@ -76,10 +76,10 @@ void MainWindow::on_a_open_triggered()
 
 void MainWindow::on_a_openFile_triggered()
 {
-   ui->tableWidget->clear();
    QString filename = QFileDialog::getOpenFileName(this,tr("Open File"),"/home",tr("Images (*.png *.xpm *.jpg *.bmp *.tiff *.gif *.pcx)"));
    if(filename.isNull())
        return;
+   ui->tableWidget->setRowCount(0);
    if(ui->tableWidget->rowCount()==0)
        ui->tableWidget->insertRow(0);
    processImage(filename,0);
